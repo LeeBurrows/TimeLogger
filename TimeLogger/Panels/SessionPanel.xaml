@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="TimeLogger.Panels.SessionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TimeLogger.Panels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+
+    <GroupBox Header="Edit Session">
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- session day -->
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label Style="{StaticResource formLabel}">Date:</Label>
+                <DatePicker Name="sessionStartDate" HorizontalAlignment="Left" />
+            </StackPanel>
+            <!-- session start time -->
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Label Style="{StaticResource formLabel}">Start:</Label>
+                <WrapPanel>
+                    <ComboBox Name="sessionStartHours"
+                      ItemsSource="{StaticResource hoursList}"
+                      Width="50" />
+                    <ComboBox Name="sessionStartMinutes"
+                      ItemsSource="{StaticResource minutesList}"
+                      Width="50" />
+                </WrapPanel>
+            </StackPanel>
+            <!-- session duration -->
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <Label Style="{StaticResource formLabel}">Duration:</Label>
+                <WrapPanel>
+                    <ComboBox Name="sessionDurationHours"
+                      ItemsSource="{StaticResource hoursList}"
+                      Width="50" />
+                    <ComboBox Name="sessionDurationMinutes"
+                      ItemsSource="{StaticResource minutesList}"
+                      Width="50" />
+                </WrapPanel>
+            </StackPanel>
+            <!-- session tag -->
+            <StackPanel Grid.Row="0" Grid.Column="3">
+                <Label Style="{StaticResource formLabel}">Tag:</Label>
+                <ComboBox Name="sessionTag" />
+            </StackPanel>
+
+            <!-- session comments -->
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+                <Label Style="{StaticResource formLabel}">Comments:</Label>
+                <TextBox Name="sessionComments"
+                         Width="auto" Height="60"
+                         MaxLength="100"
+                         TextWrapping="Wrap" AcceptsReturn="True" />
+            </StackPanel>
+
+            <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                   Margin="0,10,0,0" HorizontalAlignment="Center">
+                <!-- cancel button -->
+                <Button Name="cancelBtn"
+                    Click="clickhandler"
+                    Style="{StaticResource formButton}">Cancel</Button>
+                <Separator Width="20" Opacity="0" />
+                <!-- delete session button -->
+                <Button Name="deleteBtn"
+                    Click="clickhandler"
+                    Style="{StaticResource formButton}">Delete</Button>
+                <Separator Width="20" Opacity="0" />
+                <!-- save session button -->
+                <Button Name="submitBtn"
+                    Click="clickhandler"
+                    Style="{StaticResource formButton}">Save</Button>
+            </WrapPanel>
+        </Grid>
+    </GroupBox>
+
+</UserControl>
