@@ -198,7 +198,7 @@ namespace TimeLogger.Services
         internal List<Tag> getTags()
         {
             SQLiteConnection conn = getOpenConnection();
-            string sql = "SELECT * FROM Tags ORDER BY ID ASC";
+            string sql = "SELECT * FROM Tags ORDER BY TagLabel ASC";
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             SQLiteDataAdapter adaptor = new SQLiteDataAdapter(command);
             DataSet ds = new DataSet();
